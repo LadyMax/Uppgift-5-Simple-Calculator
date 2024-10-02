@@ -1,14 +1,29 @@
-﻿using System;
-namespace EnkelKalkylator
+using System;
+using System.Linq.Expressions;
+namespace SimpleCalculator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enkel Kalkylator");
-            Console.WriteLine("Ange operation ( +, -, *, /): ");
-            char operation = Console.ReadKey().KeyChar;
-                        double num1, num2;
+            Console.WriteLine("Simple Calculator");
+            Console.Write("Enter operation (+, -, *, /): ");
+            char operation = Convert.ToChar(Console.ReadLine());
+            bool validOperation = false;
+            while (!validOperation)
+            {
+                if (operation == '+' || operation == '-' || operation == '*' || operation == '/')
+                {
+                    validOperation = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid operation. Please enter a valid operation (+, -, *, /)");
+                    Console.Write("Enter operation: ");
+                    operation = Convert.ToChar(Console.ReadLine());
+                }
+            }
+            double num1, num2;
             Console.Write("\nEnter the first number: ");
             while (!double.TryParse(Console.ReadLine(), out num1))
             {
